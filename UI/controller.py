@@ -46,3 +46,14 @@ class Controller:
             self._view.txtOut2.controls.append(ft.Text(f"{self._model.stateMap[percorso[n]].__str__()} --> {self._model.stateMap[percorso[n+1]].__str__()},"
                                                       f"peso: {peso}, distanza: {distanza}"))
         self._view.update_page()
+
+    #     def handle_analisi(self,e):
+    #         numeroMinimo = self._view.txtCompagnie.value
+    #         try:
+    #             nm = int(numeroMinimo)
+    #         except:
+    #             self._view.create_alert("inserire un numero intero!!")
+    #             return
+    #         if nm < 0 or nm > 13:
+    #             self._view.create_alert("Inserire un valore tra 0 e 13.")
+    #             return  #

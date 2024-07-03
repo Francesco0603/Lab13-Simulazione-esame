@@ -51,7 +51,7 @@ class Model:
             for n in self.grafo.neighbors(parziale[-1]):
                 if n in parziale:
                     continue
-                if len(parziale) != 1 and self.grafo[parziale[-2]][parziale[-1]]["weight"] <= self.grafo[parziale[-1]][n]["weight"]:
+                if len(parziale) != 1 and self.grafo[parziale[-2]][parziale[-1]]["weight"] >= self.grafo[parziale[-1]][n]["weight"]:
                     continue
                 peso += self.grafo[parziale[-1]][n]["weight"]
                 distanza += self.getDistanze(parziale[-1],n)
