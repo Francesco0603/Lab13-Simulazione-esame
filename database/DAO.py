@@ -97,21 +97,16 @@ class DAO():
         result = []
 
         cursor = conn.cursor(dictionary=True)
-        query = """select 2 * 6371 * 
-                    ASIN(SQRT(
-                        POWER(SIN(RADIANS(s2.Lat - s.Lat) / 2), 2) + 
-                        COS(RADIANS(s.Lat)) * COS(RADIANS(s2.Lat)) * 
-                        POWER(SIN(RADIANS(s2.Lng - s.Lng) / 2), 2)
-                    )) as d
-                    from state s, state s2 
-                    where s.id = %s
-                    and s2.id = %s 
+        query = """select s.Lat as lat1,s.Lng as long1,s2.Lat as lat2,s2.Lng as long2 
+from state s, state s2 
+where s.id = %s
+and s2.id = %s 
                 """
 
         cursor.execute(query, (s1, s2))
 
         for row in cursor:
-            result.append(row["d"])
+            result.append((row["lat1"],row["long1"],row["lat2"],row["long2"]))
 
         cursor.close()
         conn.close()

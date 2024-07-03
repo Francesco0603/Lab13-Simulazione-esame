@@ -38,8 +38,9 @@ class Controller:
     def handle_path(self, e):
         dmax, percorso = self._model.cercaPercorso()
         self._view.txtOut2.controls.append(
-        ft.Text(f"Il percorso ha distanza massimo --> {dmax},"))
+            ft.Text(f"Il percorso ha distanza massimo --> {dmax},"))
         for n in range(len(percorso)-1):
+            print(self._model.grafo[percorso[n]][percorso[n+1]])
             peso = self._model.grafo[percorso[n]][percorso[n+1]]["weight"]
             distanza = self._model.distMap[(percorso[n],percorso[n+1])]
             self._view.txtOut2.controls.append(ft.Text(f"{self._model.stateMap[percorso[n]].__str__()} --> {self._model.stateMap[percorso[n+1]].__str__()},"
